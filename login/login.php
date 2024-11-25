@@ -4,17 +4,23 @@ include '../config.php'; // Ajusta la ruta según la ubicación de config.php
 $mensaje = ''; // Inicializa la variable mensaje
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-    $nombre = $_POST['nombre'];
     $email = $_POST['email'];
-    $password = password_hash($_POST['password'], PASSWORD_BCRYPT);
-    $address = $_POST['address'];
+    $password = $_POST['password'];
 
-    $sql = "INSERT INTO usuarios (nombre, email, password, address) VALUES ('$nombre', '$email', '$password', '$address')";
+    $sql = "SELECT * FROM usuarios WHERE email='$email'";
+    $result = $conn->query($sql);
 
-    if ($conn->query($sql) === TRUE) {
-        $mensaje = "<div class='success-message'>Registro exitoso</div>";
+    if ($result->num_rows > 0) {
+        $row = $result->fetch_assoc();
+        if (password_verify($password, $row['password'])) {
+            // Inicio de sesión exitoso, redirige al index.html
+            header("Location: ../index.html");
+            exit();
+        } else {
+            $mensaje = "<div class='error-message'>Contraseña incorrecta.</div>";
+        }
     } else {
-        $mensaje = "<div class='error-message'>Error: " . $sql . "<br>" . $conn->error . "</div>";
+        $mensaje = "<div class='error-message'>Usuario no encontrado.</div>";
     }
     $conn->close();
 }
@@ -25,7 +31,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Registro de Usuarios</title>
+    <title>Inicio de Sesión</title>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -36,8 +42,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             height: 100vh;
         }
         .form-container {
-            max-width: 545px;
             width: 100%;
+            max-width: 400px;
             background-color: white;
             border: 2px solid #333;
             padding: 20px;
@@ -46,7 +52,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         }
         h2 {
             color: #333;
-            aling-item: center; 
         }
         .form-group {
             margin-bottom: 15px;
@@ -55,14 +60,14 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             display: block;
             color: #333;
         }
-        input[type="text"], input[type="email"], input[type="password"] {
+        input[type="email"], input[type="password"] {
             width: 95%;
             padding: 10px;
             border: 1px solid #ccc;
             border-radius: 5px;
             margin-top: 5px;
         }
-        .form-group input[type="text"]:focus, .form-group input[type="email"]:focus, .form-group input[type="password"]:focus {
+        .form-group input[type="email"]:focus, .form-group input[type="password"]:focus {
             border-color: #ff6600;
         }
         .submit-button {
@@ -95,12 +100,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 </head>
 <body>
     <div class="form-container">
-        <h2>Registro de Usuarios</h2>
+        <h2>Inicio de Sesión</h2>
         <form method="POST" action="">
-            <div class="form-group">
-                <label for="nombre">Nombre:</label>
-                <input type="text" id="nombre" name="nombre" required>
-            </div>
             <div class="form-group">
                 <label for="email">Email:</label>
                 <input type="email" id="email" name="email" required>
@@ -109,11 +110,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                 <label for="password">Contraseña:</label>
                 <input type="password" id="password" name="password" required>
             </div>
-            <div class="form-group">
-                <label for="address">Dirección:</label>
-                <input type="text" id="address" name="address" required>
-            </div>
-            <button type="submit" class="submit-button">Registrar</button>
+            <button type="submit" class="submit-button">Iniciar Sesión</button>
         </form>
         <?php
         if (!empty($mensaje)) {
