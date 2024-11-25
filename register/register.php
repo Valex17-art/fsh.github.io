@@ -46,7 +46,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         }
         h2 {
             color: #333;
-            aling-item: center; 
         }
         .form-group {
             margin-bottom: 15px;
@@ -115,6 +114,10 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             </div>
             <button type="submit" class="submit-button">Registrar</button>
         </form>
+        <div>
+            <p>¿Ya tienes una cuenta?</p><a href="../login/login.php">Iniciar sesión</a>
+        </div>
+
         <?php
         if (!empty($mensaje)) {
             echo $mensaje;

@@ -112,6 +112,9 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             </div>
             <button type="submit" class="submit-button">Iniciar Sesión</button>
         </form>
+        <div>
+            <p>¿No te has registrado?</p><a href="../register/register.php">Registrarse</a>
+        </div>
         <?php
         if (!empty($mensaje)) {
             echo $mensaje;
