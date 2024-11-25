@@ -1,0 +1,188 @@
+/* Colores institucionales */
+:root {
+    --naranja: #FE5000;
+    --negro: #000000;
+    --blanco: #FFFFFF;
+    --gris: #595353;
+    --beige: #EDD8CD;
+}
+
+/* General */
+body {
+    font-family: Arial, sans-serif;
+    background-color: var(--beige);
+    color: var(--gris);
+    margin: 0;
+    padding: 0;
+    line-height: 1.6;
+}
+
+header {
+    background: var(--negro);
+    color: var(--blanco);
+    padding: 1rem 0;
+    text-align: center;
+}
+
+nav ul {
+    list-style: none;
+    display: flex;
+    justify-content: center;
+    margin-top: 1rem;
+}
+
+nav ul li a {
+    color: var(--blanco);
+    text-decoration: none;
+    margin: 0 1rem;
+}
+
+main {
+    padding: 2rem;
+}
+
+/* Servicios */
+#servicios {
+    text-align: center;
+    padding: 2rem;
+    background-color: #f4f4f4;
+}
+.servicios-container {
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+    flex-wrap: wrap;
+}
+.servicio {
+    max-width: 300px;
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 1rem;
+    text-align: center;
+}
+.servicio img {
+    width: 100%;
+    border-radius: 5px;
+}
+.servicio h3 {
+    color: #004d99;
+    margin: 1rem 0 0.5rem;
+}
+.servicio p {
+    color: #555;
+    font-size: 0.9rem;
+    line-height: 1.5;
+}
+
+/* Botones */
+button {
+    background: var(--naranja);
+    color: var(--blanco);
+    border: none;
+    padding: 0.5rem 1rem;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background 0.3s;
+}
+
+button:hover {
+    background: var(--gris);
+}
+
+footer {
+    text-align: center;
+    padding: 1rem;
+    background: #333;
+    color: #fff;
+    margin-top: 2rem;
+}
+
+
+
+section {
+    margin: 2rem auto;
+    padding: 2rem;
+    max-width: 1200px;
+    border-radius: 10px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+    background-color: #ffffff;
+}
+#servicios {
+    text-align: center;
+    background-color: #f9f9f9;
+    border: 2px solid #e0e0e0;
+}
+.servicio {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 1rem;
+    margin-bottom: 1.5rem;
+    border-radius: 10px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+    background-color: white;
+}
+.servicio img {
+    width: 100%;
+    max-height: 200px;
+    object-fit: cover;
+    border-radius: 5px;
+}
+.servicio button {
+    background-color: #004d99;
+    color: white;
+    border: none;
+    padding: 0.8rem;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: 1rem;
+}
+.servicio button:hover {
+    background-color: #003366;
+}
+
+#contacto {
+    margin: 2rem auto;
+    padding: 2rem;
+    max-width: 600px;
+    border-radius: 10px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+    background-color: #ffffff;
+    text-align: center;
+}
+
+#contacto form {
+    display: flex;
+    flex-direction: column; /* Apila los elementos verticalmente */
+    gap: 1rem; /* Espacio entre los campos */
+}
+
+#contacto label {
+    font-weight: bold;
+    text-align: left;
+    margin-bottom: 0.5rem;
+}
+
+#contacto input,
+#contacto textarea {
+    width: 100%; /* Ocupa todo el ancho disponible */
+    padding: 0.8rem;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    font-size: 1rem;
+}
+
+#contacto button {
+    background-color: #004d99;
+    color: white;
+    padding: 0.8rem;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1rem;
+}
+
+#contacto button:hover {
+    background-color: #003366;
+}
