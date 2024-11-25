@@ -142,6 +142,10 @@ section {
     background-color: #003366;
 }
 
+.img-container {
+    text-align: center;
+}
+
 #contacto {
     margin: 2rem auto;
     padding: 2rem;
